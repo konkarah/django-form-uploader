@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: celery-beat
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: celery-beat
+  template:
+    metadata:
+      labels:
+        app: celery-beat
+    spec:
+      containers:
+        - name: celery-beat
+          image: Thindi/backend:latest
+          command: ["celery", "-A", "dynamic_forms", "beat", "--loglevel=info"]
+          envFrom:
+            - secretRef:
+                name: backend-env

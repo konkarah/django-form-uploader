@@ -1,5 +1,3 @@
-# backend/apps/users/authentication.py - COMPLETE FIXED VERSION
-
 import jwt
 import requests
 from django.conf import settings

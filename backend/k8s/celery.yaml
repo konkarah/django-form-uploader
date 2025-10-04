@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: celery
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: celery
+  template:
+    metadata:
+      labels:
+        app: celery
+    spec:
+      containers:
+        - name: celery
+          image: Thindi/backend:latest
+          command: ["celery", "-A", "dynamic_forms", "worker", "--loglevel=info"]
+          envFrom:
+            - secretRef:
+                name: backend-env

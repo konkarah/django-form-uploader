@@ -1,0 +1,42 @@
+version: '3.9'
+
+services:
+  backend:
+    build: ./backend
+    container_name: backend
+    env_file:
+      - ./backend/.env
+    volumes:
+      - ./backend:/app
+      - ./backend/media:/app/media
+    ports:
+      - "8000:8000"
+    depends_on:
+      - redis
+    command: gunicorn dynamic_forms.wsgi:application --bind 0.0.0.0:8000
+
+  redis:
+    image: redis:7
+    container_name: redis
+    ports:
+      - "6379:6379"
+
+  celery:
+    build: ./backend
+    container_name: celery
+    env_file:
+      - ./backend/.env
+    command: celery -A dynamic_forms worker --loglevel=info
+    depends_on:
+      - backend
+      - redis
+
+  celery-beat:
+    build: ./backend
+    container_name: celery-beat
+    env_file:
+      - ./backend/.env
+    command: celery -A dynamic_forms beat --loglevel=info
+    depends_on:
+      - backend
+      - redis

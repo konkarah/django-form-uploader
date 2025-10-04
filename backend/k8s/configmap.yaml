@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: backend-env
+type: Opaque
+stringData:
+  SECRET_KEY: "swgcwgcdtwdfsgvxwv"
+  DEBUG: "False"
+  CELERY_BROKER_URL: "redis://redis:6379/0"
+  CELERY_RESULT_BACKEND: "redis://redis:6379/0"

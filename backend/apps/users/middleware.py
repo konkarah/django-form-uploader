@@ -1,24 +1,3 @@
-# from django.contrib.auth import get_user_model
-# from django.utils.deprecation import MiddlewareMixin
-# from .authentication import ClerkAuthentication
-
-# User = get_user_model()
-
-# class ClerkAuthenticationMiddleware(MiddlewareMixin):
-#     """
-#     Middleware to handle Clerk authentication for non-DRF views
-#     """
-    
-#     def process_request(self, request):
-#         if not hasattr(request, 'user') or request.user.is_anonymous:
-#             auth = ClerkAuthentication()
-#             try:
-#                 user_auth_tuple = auth.authenticate(request)
-#                 if user_auth_tuple:
-#                     request.user = user_auth_tuple[0]
-#             except:
-#                 pass  # Let the view handle authentication errors
-
 from django.utils.deprecation import MiddlewareMixin
 from .authentication import ClerkAuthentication
 import logging
