@@ -7,7 +7,7 @@ from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 from datetime import timedelta
 import logging
-from .models import FormSubmission
+from apps.forms.models import FormSubmission
 from apps.notifications.models import Notification
 
 User = get_user_model()

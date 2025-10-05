@@ -32,6 +32,8 @@ class FormTemplateListCreateView(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         serializer.save(created_by=self.request.user)
 
+
+
 class FormTemplateDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = FormTemplate.objects.all()
     serializer_class = FormTemplateSerializer

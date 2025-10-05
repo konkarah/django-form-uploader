@@ -2,6 +2,87 @@
 
 A full-stack platform for creating, managing, and submitting dynamic forms with real-time notifications and role-based access control.
 
+Key Features
+1. Flexible Field Types
+
+Text Input
+Textarea
+Number
+Email
+Phone
+Date
+Datetime
+Dropdown (Single/Multiple)
+Checkbox
+Radio Buttons
+File Upload (Single/Multiple)
+Rich Text Editor
+Rating Scale
+Slider
+Address (with components)
+
+2. Admin Form Builder
+
+Drag-and-drop visual builder
+JSON schema editor for advanced users
+Field validation configuration
+Conditional field visibility
+Form preview mode
+
+3. Client Experience
+
+Auto-save drafts every 30 seconds
+Progress indicator for multi-step forms
+File upload with preview
+Validation feedback
+Resume incomplete forms
+
+4. Notification System
+
+Email notifications via SendGrid
+In-app notifications
+Admin dashboard alerts
+Submission status tracking
+
+5. Analytics Dashboard
+
+Form submission counts
+Completion rates
+Field-level analytics
+Export capabilities
+
+Design Decisions
+1. Field Evolution Strategy
+Using JSON schema with versioning to handle field changes:
+
+Each form stores its schema version
+New submissions use current schema
+Old submissions maintain compatibility
+Gradual migration path for field updates
+
+2. Validation Engine
+Predefined validation types stored in field configuration:
+
+Built-in validations (required, email, phone, etc.)
+Custom regex patterns
+Conditional validations based on other field values
+File type and size restrictions
+
+3. Draft System
+
+Auto-save mechanism using local storage + API sync
+Unique draft identifiers per user/form combination
+Cleanup mechanism for abandoned drafts
+Resume functionality with progress tracking
+
+4. Scalability Considerations
+
+Paginated APIs for large datasets
+Indexed database queries
+Async task processing for heavy operations
+Modular component architecture
+Caching strategy for frequently accessed data
+
 ## 🏗️ Architecture
 
 This project consists of two main components:
